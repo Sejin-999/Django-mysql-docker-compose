@@ -15,8 +15,10 @@ ENV DJANGO_CORS_ORIGIN_WHITELIST $DJANGO_CORS_ORIGIN_WHITELIST
 WORKDIR /backend
 COPY requirements.txt /backend/
 
-#RUN apt-get update && apt-get install -y curl  #우분투 환경이면 넣어야할듯???
-
+RUN apk add --no-cache \
+        libressl-dev \
+        musl-dev \
+        libffi-dev  gcc
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN pip install pymysql

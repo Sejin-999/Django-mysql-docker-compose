@@ -17,8 +17,6 @@ services:
       - --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./mysql/data:/var/lib/mysql  #이거?
-    networks:
-      - django-network
     
   backend:
     build:
@@ -39,7 +37,3 @@ services:
       - ./.env
     depends_on:
       - mysql
-    networks:
-      - django-network
-networks:
-  django-network:
